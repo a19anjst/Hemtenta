@@ -28,8 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="20dp"
-        android:text="Welcome to Norse Mythology!"
-        android:layout_marginTop="120dp"/>
+        android:text="Welcome to the FishingGuide"
+        android:layout_marginTop="80dp"/>
 
     <ListView
         android:id="@+id/list_LISTVIEW"

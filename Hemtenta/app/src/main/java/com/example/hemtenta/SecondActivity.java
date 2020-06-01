@@ -21,7 +21,7 @@ public class SecondActivity extends AppCompatActivity {
             String size = extras.getString("size");
             String names = extras.getString("names");
             String prefs = extras.getString("prefs");
-            textView.setText("The " + names + " lives in " + location + " and prefers " + prefs + ". It is usually " + size + " long.");
+            textView.setText("The " + names + " lives in the " + location + " and prefers " + prefs + ". It is usually " + size + " long.");
         }
         Button close = findViewById(R.id.go_back);
         close.setOnClickListener(new View.OnClickListener() {
