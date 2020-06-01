@@ -5,18 +5,20 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a19anjst");
+        String imageUrl = "https://farm8.staticflickr.com/7482/16313003116_6796f328f7_b.jpg";
+        ImageView imageView = (ImageView) findViewById(R.id.ImageView);
+        Picasso.get().load(imageUrl).into(imageView);
     }
     @SuppressLint("StaticFieldLeak")
     private class JsonTask extends AsyncTask<String, String, String> {
@@ -51,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         private ArrayList<String> FishLocs=new ArrayList<String>();
         private ArrayList<String> FishSize=new ArrayList<String>();
         private ArrayList<String> FishPrefs=new ArrayList<String>();
-
 
 
         protected String doInBackground(String... params) {
@@ -148,4 +152,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

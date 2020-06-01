@@ -13,7 +13,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        TextView textView = findViewById(R.id.godtext);
+        TextView textView = findViewById(R.id.fishtext);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null){
@@ -21,7 +21,9 @@ public class SecondActivity extends AppCompatActivity {
             String size = extras.getString("size");
             String names = extras.getString("names");
             String prefs = extras.getString("prefs");
+            String img = extras.getString("img");
             textView.setText("The " + names + " lives in the " + location + " and prefers " + prefs + ". It is usually " + size + " long.");
+
         }
         Button close = findViewById(R.id.go_back);
         close.setOnClickListener(new View.OnClickListener() {
