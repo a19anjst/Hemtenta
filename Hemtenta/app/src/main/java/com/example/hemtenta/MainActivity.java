@@ -1,15 +1,19 @@
-package com.example.hemtentamen;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+package com.example.hemtenta;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -33,10 +37,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a19anjst_2");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a19anjst");
     }
     @SuppressLint("StaticFieldLeak")
     private class JsonTask extends AsyncTask<String, String, String> {
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     FishSize.add(company);
                     FishPrefs.add(category);
                 }
-                ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this, R.layout.list_textview, R.id.list_TEXTVIEW, FishNames);
+                ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this, R.layout.list_item_textview, R.id.list_TEXTVIEW, FishNames);
                 ListView my_listview=(ListView) findViewById(R.id.list_LISTVIEW);
                 my_listview.setAdapter(adapter);
                 my_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -122,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
